@@ -1,13 +1,38 @@
 package com.orange.microservice.UserService.UserService;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.Optional;
+
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.orange.microservice.UserService.UserService.model.User;
+import com.orange.microservice.UserService.UserService.repository.UserRepository;
 
 @SpringBootTest
 class UserServiceApplicationTests {
+	@Autowired
+	private UserRepository userRepo;
 
 	@Test
-	void contextLoads() {
+	void ajouterUnUtilisateur() {
+		User unUtilisateur = new User ("PATINI","Marvin","Developpeur","marvin.patini@gmail.com","123456789");
+		userRepo.save(unUtilisateur);
+		Optional<User> stockUtilisateur = afficherUnUtilisateurByName("PATINI");
+		assertEquals(unUtilisateur.getNom(), stockUtilisateur.get().getNom());
+		System.out.println(unUtilisateur.getNom());
+		System.out.println(stockUtilisateur.get().getNom());
 	}
+	
+	public Optional<User> afficherUnUtilisateurByName(String nom) {
+	       Optional<User> UnUtilisateur = userRepo.findByNom(nom);
+	       return UnUtilisateur;	     
+	}
+	
+	}	
+	
 
-}
+

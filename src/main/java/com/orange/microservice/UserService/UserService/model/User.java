@@ -1,4 +1,4 @@
-package model;
+package com.orange.microservice.UserService.UserService.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,6 +26,19 @@ public class User {
 		this.motDePasse = motDePasse;
 	}
 	
+	public User(String nom, String prenom, String fonction, String mail, String motDePasse) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.fonction = fonction;
+		this.mail = mail;
+		this.motDePasse = motDePasse;
+		// TODO Auto-generated constructor stub
+	}
+
+	public User() {
+		super();
+	}
+
 	public int getId() {
 		return id;
 	}

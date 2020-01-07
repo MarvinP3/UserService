@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.orange.microservice.UserService.UserService.model.User;
 import com.orange.microservice.UserService.UserService.repository.UserRepository;
-
-import model.User;
 
 @RestController
 public class UserController {
