@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,10 +35,11 @@ public class UserController {
 }
     
     @RequestMapping(value="/Utilisateur", method=RequestMethod.POST)
-    public String createUtilisateur(@RequestParam User unUtilisateur) {
+    public String createUtilisateur(@RequestBody User unUtilisateur) {
     	userRepo.save(unUtilisateur);
     	return " Un utilisateur à été crée";
     }
+    
     
     @RequestMapping(value="/Utilisateur", method=RequestMethod.PUT)
     public String modifierUtilisateur(@RequestParam User unUtilisateur) {
