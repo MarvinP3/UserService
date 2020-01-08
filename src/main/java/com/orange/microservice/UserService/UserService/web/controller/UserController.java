@@ -1,10 +1,13 @@
 package com.orange.microservice.UserService.UserService.web.controller;
+
+
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,7 +30,7 @@ public class UserController {
         
 	}
     
-    //Récupérer un produit par son Id
+    //Récupérer un utilisateur par son Id
     @GetMapping(value="/Utilisateur/{id}")
     public Optional<User> afficherUnUtilisateur(@PathVariable int id) {
         Optional<User> UnUtilisateur = userRepo.findById(id);
@@ -51,5 +54,18 @@ public class UserController {
     public String supprimerUtilisateur(@RequestBody User unUtilisateur) {
     	userRepo.delete(unUtilisateur);
     	return " Un utilisateur supprimé";
+    }
+    
+    
+    @PostMapping(value="/Utilisateur/Authentification")
+    public String authentificationUtilisateur(@RequestBody User unUtilisateur) {
+    	Optional<User> stockUtilisateur =userRepo.findByLoginAndMotDePasse(unUtilisateur.getLogin(), unUtilisateur.getMotDePasse());
+    	 if (stockUtilisateur.isPresent()) {
+    		 return "log et mot de passe correcte";
+    	 }
+    	 else {
+    		 return "log et mot de passe incorrecte";
+    	 }
+    	
     }
 }

@@ -19,7 +19,7 @@ class UserServiceApplicationTests {
 
 	@Test
 	void ajouterUnUtilisateur() {
-		User unUtilisateur = new User ("PATINI","Marvin","Developpeur","marvin.patini@gmail.com","123456789");
+		User unUtilisateur = new User ("PATINI","Marvin","Developpeur","marvin.patini@gmail.com","Pyke","123456789");
 		userRepo.save(unUtilisateur);
 		Optional<User> stockUtilisateur = afficherUnUtilisateurByName("PATINI");
 		assertEquals(unUtilisateur.getNom(), stockUtilisateur.get().getNom());
@@ -30,6 +30,16 @@ class UserServiceApplicationTests {
 	public Optional<User> afficherUnUtilisateurByName(String nom) {
 	       Optional<User> UnUtilisateur = userRepo.findByNom(nom);
 	       return UnUtilisateur;	     
+	}
+	void modifierUnUtilisateur() {
+		User unUtilisateur = new User ("SOREL","Stephane","Develeppeur","stephane.sorel@gmail.com","abcd","987654321");
+		userRepo.save(unUtilisateur);
+		Optional<User> stockUtilisateur = modifierUtilisateurById();
+	}
+	
+	public Optional<User> modifierUtilisateurById() {
+		   Optional<User> unUtilisateur = userRepo.findById(nom,prenom,fonction,mail,login,motDePasse);
+		   return unUtilisateur;
 	}
 	
 	}	

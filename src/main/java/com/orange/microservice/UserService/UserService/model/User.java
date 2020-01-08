@@ -14,23 +14,26 @@ public class User {
 	private String prenom;
 	private String fonction;
 	private String mail;
+	private String login;
 	private String motDePasse;
 	
 	
-	public User(int id, String nom, String prenom, String fonction, String mail, String motDePasse) {
+	public User(int id, String nom, String prenom, String fonction, String mail, String login, String motDePasse) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.fonction = fonction;
 		this.mail = mail;
+		this.login =login;
 		this.motDePasse = motDePasse;
 	}
 	
-	public User(String nom, String prenom, String fonction, String mail, String motDePasse) {
+	public User(String nom, String prenom, String fonction, String mail,String login, String motDePasse) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.fonction = fonction;
 		this.mail = mail;
+		this.login =login;
 		this.motDePasse = motDePasse;
 		// TODO Auto-generated constructor stub
 	}
@@ -79,6 +82,14 @@ public class User {
 		this.mail = mail;
 	}
 	
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
 	public String getMotDePasse() {
 		return motDePasse;
 	}
@@ -89,7 +100,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "Users [id=" + id + ",nom=" + nom + ", prenom=" + prenom + ", fonction=" + fonction + ", mail=" + mail +", motDePasse =" + motDePasse + "]";
+		return "User [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", fonction=" + fonction + ", mail=" + mail
+				+ ", login=" + login + ", motDePasse=" + motDePasse + "]";
 	}
 	
 	
