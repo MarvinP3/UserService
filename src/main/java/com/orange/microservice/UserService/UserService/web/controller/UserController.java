@@ -41,14 +41,14 @@ public class UserController {
     }
     
     
-    @RequestMapping(value="/Utilisateur", method=RequestMethod.PUT)
-    public String modifierUtilisateur(@RequestParam User unUtilisateur) {
+    @RequestMapping(value="/Utilisateur/{id}", method=RequestMethod.PUT)
+    public String modifierUtilisateur(@RequestBody User unUtilisateur) {
     	userRepo.save(unUtilisateur);
     	return " Un utilisateur modifié";
     }
     
-    @RequestMapping(value="/Utilisateur", method=RequestMethod.DELETE)
-    public String supprimerUtilisateur(@RequestParam User unUtilisateur) {
+    @RequestMapping(value="/Utilisateur/{id}", method=RequestMethod.DELETE)
+    public String supprimerUtilisateur(@RequestBody User unUtilisateur) {
     	userRepo.delete(unUtilisateur);
     	return " Un utilisateur supprimé";
     }
