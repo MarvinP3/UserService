@@ -32,16 +32,26 @@ class UserServiceApplicationTests {
 	       return UnUtilisateur;	     
 	}
 	void modifierUnUtilisateur() {
-		User unUtilisateur = new User ("SOREL","Stephane","Develeppeur","stephane.sorel@gmail.com","abcd","987654321");
+		User unUtilisateur = new User (1,"SOREL","Stephane","Develeppeur","stephane.sorel@gmail.com","abcd","987654321");
 		userRepo.save(unUtilisateur);
-		Optional<User> stockUtilisateur = modifierUtilisateurById();
+		Optional<User> stockUtilisateur = modifierUnUtilisateurById(1);
+		assertEquals(unUtilisateur.getId(), stockUtilisateur.get().getId());
+		System.out.println(unUtilisateur.getNom());
 	}
-	
-	public Optional<User> modifierUtilisateurById() {
-		   Optional<User> unUtilisateur = userRepo.findById(nom,prenom,fonction,mail,login,motDePasse);
+
+	public Optional<User> modifierUnUtilisateurById(int id) {
+		   Optional<User> unUtilisateur = userRepo.findById(id);
 		   return unUtilisateur;
 	}
 	
+	void supprimerUnUtilisateur() {
+		User unUtilisateur = null;
+		userRepo.delete(unUtilisateur);
+	}
+	public Optional<User>supprimerUnUtilisateurById(String nom) {
+		Optional<User> unUtilisateur = userRepo.findByNom(nom);
+		return unUtilisateur;
+	}
 	}	
 	
 
